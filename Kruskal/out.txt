@@ -1,0 +1,20 @@
+﻿**********************************************************
+RESEAU #1
+Câble nécessaire pour connecter (5,19) à (55,28) : 66.80 mètres.
+Câble nécessaire pour connecter (55,28) à (28,62) : 59.42 mètres.
+Câble nécessaire pour connecter (28,62) à (38,101) : 56.26 mètres.
+Câble nécessaire pour connecter (38,101) à (43,116) : 31.81 mètres.
+Câble nécessaire pour connecter (43,116) à (111,84) : 91.15 mètres.
+Longueur totale de câble nécessaire : 305.45.
+**********************************************************
+RESEAU #2
+Câble nécessaire pour connecter (11,27) à (88,30) : 93.06 mètres.
+Câble nécessaire pour connecter (88,30) à (95,38) : 26.63 mètres.
+Câble nécessaire pour connecter (95,38) à (84,99) : 77.98 mètres.
+Câble nécessaire pour connecter (84,99) à (142,81) : 76.73 mètres.
+Longueur totale de câble nécessaire : 274.40.
+**********************************************************
+RESEAU #3
+Câble nécessaire pour connecter (132,73) à (72,111) : 87.02 mètres.
+Câble nécessaire pour connecter (72,111) à (49,86) : 49.97 mètres.
+Longueur totale de câble nécessaire : 136.99.
