@@ -11,7 +11,7 @@ const int N=1e6+5,MOD=1e9+7;
 int tc,a,b,c;
 map<pair<int,int>,int>wa;
 map<pair<int,int>,bool>vis;
-void fckoff(int a,int b,int c,int d){
+void treat(int a,int b,int c,int d){
      if(!wa.count({a,b}))
          wa[{a,b}]=wa[{c,d}]+1;
      else
@@ -32,19 +32,19 @@ void bfs(){
          int a1=q.front().first , b1=q.front().second;
          vis[{a1,b1}]=true;
          q.pop();
-         if( a1<a && !vis.count({a,b1}))q.push({a,b1}),fckoff(a,b1,a1,b1);
-         if( b1<b && !vis.count({a1,b}))q.push({a1,b}),fckoff(a1,b,a1,b1);
-         if( a1 && !vis.count({0,b1}))q.push({0,b1}),fckoff(0,b1,a1,b1);
-         if( b1 && !vis.count({a1,0}))q.push({a1,0}),fckoff(a1,0,a1,b1);
+         if( a1<a && !vis.count({a,b1}))q.push({a,b1}),treat(a,b1,a1,b1);
+         if( b1<b && !vis.count({a1,b}))q.push({a1,b}),treat(a1,b,a1,b1);
+         if( a1 && !vis.count({0,b1}))q.push({0,b1}),treat(0,b1,a1,b1);
+         if( b1 && !vis.count({a1,0}))q.push({a1,0}),treat(a1,0,a1,b1);
          if( a1 && b1<b ){
               int pour = min(b-b1,a1);
               if(!vis.count({a1-pour,b1+pour}))
-               q.push({a1-pour,b1+pour}),fckoff(a1-pour,b1+pour,a1,b1);
+               q.push({a1-pour,b1+pour}),treat(a1-pour,b1+pour,a1,b1);
          }
          if( b1 && a1<a ){
               int pour = min(a-a1,b1);
               if(!vis.count({a1+pour,b1-pour}))
-              q.push({a1+pour,b1-pour}),fckoff(a1+pour,b1-pour,a1,b1);
+              q.push({a1+pour,b1-pour}),treat(a1+pour,b1-pour,a1,b1);
          }
      }
 }
