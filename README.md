@@ -1,2 +1,2 @@
 # Competitive-programming
-These are my codes of some solved problems from different online judges.
+This repository will contain pretty much, all of my knowledge in competitive programming (some algorithms implementations , problems implementations ,optimisation techniques ...) 
