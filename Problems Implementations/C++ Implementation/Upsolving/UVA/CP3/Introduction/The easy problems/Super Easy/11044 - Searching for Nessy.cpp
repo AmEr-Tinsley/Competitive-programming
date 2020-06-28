@@ -27,10 +27,14 @@ int main(){
         scanf("%d",&tc);
 
         while(tc--){
-            int x,y;
-            scanf("%d %d",&x,&y);
-            
-            puts(x<y ? "<" : (x>y ? ">" : "="));
+            int n;
+            scanf("%d",&n);
+            std::vector<int> a(n);
+            for(int i=0;i<n;i++)scanf("%d",&a[i]);
+            sort(all(a));
+            int mid = (a[0]+a.back())/2;
+            int ans = (a.back()-a[0])*2;
+            printf("%d\n",ans );
         }
         
         
