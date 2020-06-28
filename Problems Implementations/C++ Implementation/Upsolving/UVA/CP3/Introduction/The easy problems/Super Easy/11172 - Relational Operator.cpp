@@ -30,7 +30,7 @@ int main(){
             int x,y;
             scanf("%d %d",&x,&y);
             
-            printf("%d\n",(x/3)*(y/3));
+            puts(x<y ? "<" : (x>y ? ">" : "="));
         }
         
         
