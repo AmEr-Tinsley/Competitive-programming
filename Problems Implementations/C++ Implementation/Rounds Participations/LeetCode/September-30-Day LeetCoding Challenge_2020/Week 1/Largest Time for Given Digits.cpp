@@ -14,7 +14,7 @@ public:
         string h = to_string(best.first);
         string m = to_string(best.second);
         if(h.size() == 1)h = "0"+h;
-        if(m.size() == 1)m = "0"+m
+        if(m.size() == 1)m = "0"+m;
         return h + ":" + m;
     }
 };
