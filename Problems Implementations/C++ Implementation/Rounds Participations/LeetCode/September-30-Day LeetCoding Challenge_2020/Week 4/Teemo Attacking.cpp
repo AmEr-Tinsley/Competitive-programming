@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findPoisonedDuration(vector<int>& timeSeries, int duration) {
-     	int l = 0 , r = 0 , ret = 0;
+     	int l = 0 , r = -1 , ret = 0;
      	for(auto x : timeSeries){
      		int lx = x , rx = x + duration - 1;
 
