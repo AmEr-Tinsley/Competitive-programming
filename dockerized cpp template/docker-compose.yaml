@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+    program:
+        build: 
+            context: ./
+            dockerfile: Dockerfile.run
+        stdin_open: true
+        tty: true
+        volumes: 
+            - ./:/usr/src/app
+        depends_on: 
+            - compile
+    compile:
+        build:
+            context: ./
+            dockerfile: Dockerfile.compile
+        stdin_open: true
+        tty: true 
+        volumes: 
+            - ./:/usr/src/app
