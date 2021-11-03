@@ -8,9 +8,9 @@
 #define ll long long
 using namespace std;
 //using namespace  __gnu_pbds;
-
+ 
 //typedef tree< int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-
+ 
 void file(){
 	#ifndef ONLINE_JUDGE
     freopen("in.txt", "r", stdin);
@@ -20,9 +20,9 @@ void file(){
 int tc;
 const int N=1e6+5,M=2e6+5,MOD=1e9+7,OO=1e9+7;
 const ll INF = 2e18;
-
+ 
 vector<vector<ll>>dp(N+1,vector<ll>(2));
-
+ 
 void solve(int tc ){
     string a,b;
 	cin>>b>>a;
@@ -39,7 +39,7 @@ void solve(int tc ){
 			if(j)dp[i][j] = min(dp[i][j],1 + dp[i][j-1]);
 		}
 	}
-
+ 
 	cout<<dp[n-1][m-1]<<"\n";
 }
 int main(){

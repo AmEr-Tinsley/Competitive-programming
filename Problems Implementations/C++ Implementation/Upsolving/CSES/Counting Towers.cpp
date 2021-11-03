@@ -8,9 +8,9 @@
 #define ll long long
 using namespace std;
 //using namespace  __gnu_pbds;
-
+ 
 //typedef tree< int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-
+ 
 void file(){
 	#ifndef ONLINE_JUDGE
     freopen("in.txt", "r", stdin);
@@ -24,29 +24,19 @@ const ll INF = 2e18;
 vector<vector<ll>>dp(N+1,vector<ll>(2));
 
 void solve(int tc ){
-    string a,b;
-	cin>>b>>a;
-	a = "#" + a;
-	b = "#" + b;
-	int n = sz(a) , m = sz(b);
-	vector<vector<int>> dp(n,vector<int>(m,OO));
-	dp[0][0] = 0;
-	for(int i = 1;i < n;i++){
-		for(int j = 0;j < m;j++){
-			int not_equal = int(a[i] != b[j]);
-			if(j)dp[i][j] = min(dp[i][j] , not_equal + dp[i-1][j-1]);
-			dp[i][j] = min(dp[i][j] , 1 + dp[i-1][j]);
-			if(j)dp[i][j] = min(dp[i][j],1 + dp[i][j-1]);
-		}
-	}
-
-	cout<<dp[n-1][m-1]<<"\n";
+    int n;
+	scanf("%d",&n);
+	printf("%lld\n",(dp[n][0] + dp[n][1])%MOD);
 }
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 	file();
-	
+	dp[1][0] = dp[1][1] = 1;
+	for(int i = 2 ;i < N;i++){
+		dp[i][0] = ((2*dp[i-1][0])%MOD + dp[i-1][1]) % MOD;
+		dp[i][1] = ( (4*dp[i-1][1])%MOD + dp[i-1][0]) % MOD;
+	}
     int tc = 1;
-    //scanf("%d",&tc);
+    scanf("%d",&tc);
     for(int i = 1;i<=tc;i++)solve(i);
 }

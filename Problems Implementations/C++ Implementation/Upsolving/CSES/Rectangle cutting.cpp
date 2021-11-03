@@ -20,27 +20,30 @@ void file(){
 int tc;
 const int N=1e6+5,M=2e6+5,MOD=1e9+7,OO=1e9+7;
 const ll INF = 2e18;
-
+ 
 vector<vector<ll>>dp(N+1,vector<ll>(2));
-
+ 
 void solve(int tc ){
-    string a,b;
-	cin>>b>>a;
-	a = "#" + a;
-	b = "#" + b;
-	int n = sz(a) , m = sz(b);
-	vector<vector<int>> dp(n,vector<int>(m,OO));
-	dp[0][0] = 0;
-	for(int i = 1;i < n;i++){
-		for(int j = 0;j < m;j++){
-			int not_equal = int(a[i] != b[j]);
-			if(j)dp[i][j] = min(dp[i][j] , not_equal + dp[i-1][j-1]);
-			dp[i][j] = min(dp[i][j] , 1 + dp[i-1][j]);
-			if(j)dp[i][j] = min(dp[i][j],1 + dp[i][j-1]);
-		}
-	}
-
-	cout<<dp[n-1][m-1]<<"\n";
+   int n,m;
+   
+   scanf("%d %d",&n,&m);
+ 
+   vector<vector<int>>dp(n+1,vector<int>(m+1,OO));
+ 
+   for(int i =1;i<=n;i++){
+	   for(int j=1;j<=m;j++){
+		   if(i == j){
+			   dp[i][j] = 0;
+			   continue;
+		   }
+		   for(int k = 1;k < max(i,j);k++){
+			   if(i>k)dp[i][j] = min(dp[i][j],1 + dp[i-k][j] + dp[k][j]);
+               if(j>k)dp[i][j] = min(dp[i][j],1 + dp[i][j-k] + dp[i][k]);
+		   }
+	   }
+   }
+ 
+   printf("%d\n",dp[n][m]);
 }
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
