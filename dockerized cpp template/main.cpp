@@ -1,3 +1,4 @@
+//                             ¯\_(ツ)_/¯  
 #include <bits/stdc++.h>
 //#include <ext/pb_ds/assoc_container.hpp>
 //#include <ext/pb_ds/tree_policy.hpp>
@@ -22,44 +23,22 @@ int tc;
 const int N = 1e6 + 5, M = 2e6 + 5, MOD = 1e9 + 7, OO = 1e9 + 7;
 const ll INF = 2e18;
 
-struct project
-{
-    int l, r, x;
-};
-
 void solve(int tc)
 {
-    int n;
+    int n,x;
 
-    scanf("%d", &n);
+    scanf("%d %d", &n,&x);
 
-    vector<project> a(n);
-
-    for (auto &p : a)
-    {
-        scanf("%d %d %d", &p.l, &p.r, &p.x);
+    vector<int> a(n);
+    ll sum = 0;
+    for(int i=0;i<n;i++){
+        int xx;
+        scanf("%d",&xx);
+        sum+=xx;
     }
 
-    sort(all(a), [](const project &a, const project &b){ return a.l < b.l; });
-
-    vector<ll> dp(n + 1);
-    for (int i = sz(a) - 1; i >= 0; i--)
-    {
-        auto it = upper_bound(all(a), a[i].r, [](int r, const project &p){ return p.l > r; });
-
-        if (it == a.end())
-        {
-
-            dp[i] = max(dp[i + 1],(ll)a[i].x);
-        }
-        else
-        {
-            int indx = it - a.begin();
-            dp[i] = max(dp[i + 1], dp[indx] + a[i].x);
-        }
-    }
- 
-    printf("%lld\n", dp[0]);
+    printf("%lld\n",(sum+x-1)/x);
+    
 }
 int main()
 {
