@@ -30,14 +30,29 @@ void solve(int tc)
     scanf("%d %d", &n,&x);
 
     vector<int> a(n);
-    ll sum = 0;
-    for(int i=0;i<n;i++){
-        int xx;
-        scanf("%d",&xx);
-        sum+=xx;
+
+    vector<pair<int,int>>dp(1<<n,{1e9,0});
+
+    for(int i = 0;i<n;i++)scanf("%d",&a[i]);
+
+    dp[0] = {1,0};
+
+    for(int i = 1;i < (1<<n) ;i++){
+        for(int j =0;j<n;j++){
+            if(i & (1<<j)){
+                int r = dp[i^(1<<j)].first;
+                int w = dp[i^(1<<j)].second;
+                if(w + a[j] > x){
+                    dp[i] = min(dp[i],{r + 1 , a[j] });
+                }
+                else{
+                    dp[i] = min(dp[i] , {r, w + a[j]});
+                }
+            }
+        }
     }
 
-    printf("%lld\n",(sum+x-1)/x);
+    printf("%d\n",dp[(1<<n)-1].first);
     
 }
 int main()
