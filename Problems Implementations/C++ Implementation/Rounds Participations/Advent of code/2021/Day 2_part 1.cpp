@@ -27,6 +27,7 @@ void solve(int tc)
 {
     string a;
     int x;
+    int r = 0 , c = 0;
     while(cin>>a>>x){
         if(a == "forward"){
             r+=x;
