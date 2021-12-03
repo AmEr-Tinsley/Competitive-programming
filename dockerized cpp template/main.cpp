@@ -25,34 +25,23 @@ const ll INF = 2e18;
 
 void solve(int tc)
 {
-    int n,x;
-
-    scanf("%d %d", &n,&x);
-
-    vector<int> a(n);
-
-    vector<pair<int,int>>dp(1<<n,{1e9,0});
-
-    for(int i = 0;i<n;i++)scanf("%d",&a[i]);
-
-    dp[0] = {1,0};
-
-    for(int i = 1;i < (1<<n) ;i++){
-        for(int j =0;j<n;j++){
-            if(i & (1<<j)){
-                int r = dp[i^(1<<j)].first;
-                int w = dp[i^(1<<j)].second;
-                if(w + a[j] > x){
-                    dp[i] = min(dp[i],{r + 1 , a[j] });
-                }
-                else{
-                    dp[i] = min(dp[i] , {r, w + a[j]});
-                }
-            }
+    string a;
+    int x;
+    ll r = 0,c = 0,aim = 0;
+    while(cin>>a>>x){
+        if(a == "forward"){
+            r+=x;
+            c+= aim*x;
+        }
+        else if(a == "down"){
+            aim+=x;
+        }
+        else{
+            aim-=x;
         }
     }
 
-    printf("%d\n",dp[(1<<n)-1].first);
+    cout<<r*c<<endl;
     
 }
 int main()
