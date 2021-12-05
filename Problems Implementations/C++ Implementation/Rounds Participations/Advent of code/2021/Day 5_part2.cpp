@@ -43,7 +43,9 @@ void solve(int tc)
         }
         else{
             int inc_x = 1 , inc_y = 1;
-            if(x1 > x2)inc_x = -1;
+            if(x1 > x2){
+                inc_x = -1;
+            }
             if(y1 > y2)inc_y = -1;
             while(x1 != x2 && y1 !=y2){
                 cnt[x1][y1]++;

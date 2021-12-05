@@ -41,17 +41,6 @@ void solve(int tc)
                 }
             }
         }
-        else{
-            int inc_x = 1 , inc_y = 1;
-            if(x1 > x2)inc_x = -1;
-            if(y1 > y2)inc_y = -1;
-            while(x1 != x2 && y1 !=y2){
-                cnt[x1][y1]++;
-                x1+=inc_x;
-                y1+=inc_y;
-            }
-            cnt[x1][y1]++;
-        }
     }
     int ans = 0;
     for(auto v : cnt){
@@ -62,7 +51,8 @@ void solve(int tc)
         }
     }
 
-    printf("%d\n",ans);    
+    printf("%d\n",ans);
+    
 }
 int main()
 {
