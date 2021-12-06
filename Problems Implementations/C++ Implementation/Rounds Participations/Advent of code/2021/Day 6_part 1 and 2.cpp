@@ -22,7 +22,7 @@ void file()
 int tc;
 const int N = 1e6 + 5, M = 2e6 + 5, MOD = 1e9 + 7, OO = 1e9 + 7;
 const ll INF = 2e18;
-
+const int NB_DAYS = 256; //80 for part 1 and 256 for part2
 void solve(int tc)
 {
     int n;
@@ -33,7 +33,7 @@ void solve(int tc)
 
     for(int i = 0,x;i<n;i++)scanf("%d",&x),freq[x]++;
 
-    for(int day = 1;day<=256;day++){
+    for(int day = 1;day<=NB_DAYS;day++){
         ll to_recycle = freq[0];
         for(int i = 1;i<=8;i++)freq[i - 1]+=freq[i],freq[i] = 0;
         freq[6]+=to_recycle;
