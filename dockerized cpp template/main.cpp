@@ -29,20 +29,19 @@ void solve(int tc)
 
     scanf("%d",&n);
 
-    vector<ll> freq(9);
-
-    for(int i = 0,x;i<n;i++)scanf("%d",&x),freq[x]++;
-
-    for(int day = 1;day<=256;day++){
-        ll to_recycle = freq[0];
-        for(int i = 1;i<=8;i++)freq[i - 1]+=freq[i],freq[i] = 0;
-        freq[6]+=to_recycle;
-        freq[8]+=to_recycle;
-        freq[0]-=to_recycle;
+    vector<int>a(n);
+    ll sum = 0;
+    for(int i = 0;i<n;i++){
+        scanf("%d",&a[i]);
+        sum+=a[i];
     }
-    ll ans = 0;
-    for(int i = 0;i<=8;i++)ans+=freq[i];
 
+    ll best = sum/n;
+
+    ll ans = 0;
+
+    for(auto x : a)ans+=(abs(best-x)*(abs(best-x)+1)/2);
+    
     printf("%lld\n",ans);
 }
 int main()
@@ -51,7 +50,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
     file();
- 
+
     int tc = 1;
     //scanf("%d",&tc);
     for (int i = 1; i <= tc; i++)
