@@ -41,7 +41,7 @@ void solve(int tc)
 
     int ans = 0;
 
-    for(auto x : a)ans+=(abs(best-x)*(abs(best-x)+1)/2);
+    for(auto x : a)ans+=abs(best - x);
 
     printf("%d\n",ans);
 }
