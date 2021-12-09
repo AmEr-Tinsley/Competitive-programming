@@ -22,57 +22,40 @@ void file()
 int tc;
 const int N = 1e6 + 5, M = 2e6 + 5, MOD = 1e9 + 7, OO = 1e9 + 7;
 const ll INF = 2e18;
-vector<string>a(105);
-
 vector<int> dx = {1,-1,0,0};
 vector<int> dy = {0,0,1,-1};
 int n,m;
-int curr;
-bool vis[105][105];
 bool isValid(int x,int y){
     return x>=0 && y>=0 && x<n && y<m;
 }
-void dfs(int x,int y){
-    if(vis[x][y])return;
-    curr++;
-    vis[x][y] = 1;
-    for(int i = 0;i<4;i++){
-        if(isValid(x+dx[i],y+dy[i])){
-            dfs(x+dx[i],y+dy[i]);
-        }
-    }
-}
+
 void solve(int tc)
 {
-    
     cin>>n;
-    
+    vector<string>a(n);
     for(int i = 0;i<n;i++){
         cin>>a[i];
     }   
     m = sz(a[0]);
-    for(int i =0;i<n;i++){
+    int ans = 0;
+    for(int i = 0;i<n;i++){
+        
         for(int j=0;j<m;j++){
-            if(a[i][j] == '9')vis[i][j] = true;
-        }
-    }
-
-    ll ans = 1;
-    vector<int>v;
-    for(int i =0;i<n;i++){
-        for(int j=0;j<m;j++){
-            curr = 0;
-            if(!vis[i][j]){
-                dfs(i,j);
-                v.push_back(curr);
+            int cnt = 0;
+            int wa = 0;
+            for(int k = 0;k<4;k++){
+                if(isValid(i+dx[k],j+dy[k])){
+                    wa++;
+                    if(a[i+dx[k]][j+dy[k]] > a[i][j])cnt++;
+                }
+            }
+            if(wa == cnt){
+                ans+=(a[i][j] - '0' + 1);
             }
         }
     }
-
-    sort(all(v));
-    reverse(all(v));
-
-    cout<<(ll)v[0] * v[1] * v[2]<<endl;
+    
+    cout<<ans<<endl;
 }
 int main()
 {
