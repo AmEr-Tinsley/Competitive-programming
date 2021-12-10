@@ -33,27 +33,20 @@ void solve(int tc)
     wa[']'] = '[';
     wa['}'] = '{';
     wa['>'] = '<';
-    wa['('] = ')';
-    wa['['] = ']';
-    wa['{'] = '}';
-    wa['<'] = '>';
     map<char,int>score;
-    score[')'] = 1;
-    score[']'] = 2;
-    score['}'] = 3;
-    score['>'] = 4;
+    score[')'] = 3;
+    score[']'] = 57;
+    score['}'] = 1197;
+    score['>'] = 25137;
     string a;
     ll ans = 0;
-    vector<ll>v;
     while(cin>>a){
         stack<char>s;
-        bool corrupted = false;
         for(auto c : a){
             if(isClosing(c)){
                 if(s.empty() || s.top() != wa[c]){
-                    corrupted = true;
+                    ans+=score[c];
                     break;
-                    
                 }
                 else if(!s.empty()){
                     s.pop();
@@ -63,20 +56,9 @@ void solve(int tc)
                 s.push(c);
             }
         }
-        if(s.empty())continue;
-        ll sc = 0;
-        if(!corrupted){
-            while(!s.empty()){
-                char c = s.top();
-                sc = sc*5 + score[wa[c]];
-                s.pop();
-            }
-        }
-        if(sc)v.push_back(sc);
     }
-    sort(all(v));
-    int n = sz(v);
-    cout<<v[n/2]<<endl;
+
+    cout<<ans<<endl;
     
 }
 int main()
