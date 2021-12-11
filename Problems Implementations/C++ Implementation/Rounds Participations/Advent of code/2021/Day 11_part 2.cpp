@@ -34,7 +34,7 @@ bool isValid(int x,int y){
 }
 void go(int x,int y){
     a[x][y]++;
-    if(a[x][y] > 9)ans++,vis[x][y] = true;
+    if(a[x][y] > 9)vis[x][y] = true;
     else  return;
     for(int i = 0;i<8;i++){
         int nextX = x + dx[i] , nextY = y + dy[i];
@@ -54,7 +54,7 @@ void solve(int tc)
         }
     }
 
-    for(int i = 0;i < DAYS;i++){
+    for(int i = 0;;i++){
 
         for(int j = 0;j<n;j++){
             for(int k = 0;k<n;k++){
@@ -70,13 +70,19 @@ void solve(int tc)
                 }
             }
         }
-
+        int cnt = 0;
         for(int j = 0;j<n;j++){
             for(int k = 0;k<n;k++){
                 if(a[j][k] > 9){
                     a[j][k] = 0;
+                    cnt++;
                 }
             }
+        }
+
+        if(cnt == n*n){
+            ans = i + 1;
+            break;
         }
     }
 
