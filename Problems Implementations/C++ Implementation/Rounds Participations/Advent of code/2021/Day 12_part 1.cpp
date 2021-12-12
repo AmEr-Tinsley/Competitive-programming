@@ -24,32 +24,28 @@ const int N = 1e6 + 5, M = 2e6 + 5, MOD = 1e9 + 7, OO = 1e9 + 7;
 const ll INF = 2e18;
 
 map<string,vector<string>>g;
-map<string,int>visited;
+map<string,int>memo;
 bool isSmallCave(string s){
     return s[0] >= 'a' && s[0] <= 'z';
 }
-int go(string u){
+int go(string u,set<string>&s){
     int cnt = 0;
     if(u == "end")return 1;
+    //if(memo.count(u))return memo[u];
     for(auto v : g[u]){
         if(isSmallCave(v)){
-            bool validToVisit = v != "start";
-            if(visited[v] > 1)continue;
-            else if(visited[v] == 1){
-                for(auto p : visited){
-                    if(isSmallCave(p.first) && p.second > 1)validToVisit = false;
-                }
-            }
-            if(validToVisit){
-                visited[v]++;
-                cnt+=go(v);
-                visited[v]--;
-            }
+            if(s.count(v))continue;
+            s.insert(v);
+            cnt+=go(v,s);
+            s.erase(v);
         }
         else{
-            cnt+=go(v);
+            s.insert(v);
+            cnt+=go(v,s);
+            s.erase(v);
         }
     }
+    memo[u] = cnt;
     return cnt;
 }
 
@@ -61,8 +57,9 @@ void solve(int tc)
         g[a].pb(b);
         g[b].pb(a);
     }
-    visited["start"] = 1;
-    int ans = go("start");
+    set<string> s;
+    s.insert("start");
+    int ans = go("start",s);
 
     cout<<ans<<endl;
     
