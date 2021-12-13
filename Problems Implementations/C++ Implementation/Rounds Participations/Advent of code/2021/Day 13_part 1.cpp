@@ -45,13 +45,13 @@ void solve(int tc)
         a[x][y] = '#';
     }
 
-    for(int i = 0;i<q;i++){
+    for(int i = 0;i<1;i++){
         char c;
         int w;
         cin>>c>>w;
 
         if(c == 'x'){
-            int l = w - abs(n-1-w),r = n-1;
+            int l = 0,r = n-1;
             while(l<r && r>w){
                 for(int j = 0;j<m;j++){
                     if(a[r][j] == '#')a[l][j] = '#';
@@ -61,7 +61,7 @@ void solve(int tc)
             }
             n = w+1;
         }else{
-            int l = w - abs(m-1-w),r = m-1;
+            int l = 0,r = m-1;
             while(l<r && r>w){
                 for(int j = 0;j<n;j++){
                     if(a[j][r] == '#')a[j][l] = '#';
@@ -76,11 +76,8 @@ void solve(int tc)
     int ans = 0;
     for(int i = 0;i<n;i++){
         for(int j = 0;j<m;j++){
-            if(a[i][j] == '#')cout<<a[i][j];
-            else cout<<' ';
             ans+=(a[i][j] == '#');
         }
-        cout<<endl;
     }
 
     cout<<ans<<endl;
