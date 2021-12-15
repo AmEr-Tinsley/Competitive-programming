@@ -34,31 +34,7 @@ void solve(int tc)
     cin>>n;
     vector<string>a(n);
     for(int i = 0;i<n;i++)cin>>a[i];
-    for(int k = 1;k<=4;k++){
-        for(int i = 0;i<n;i++){
-            string x = a[i];
-            for(int j = 0;j<sz(x);j++){
-                if((a[i][j]-'0') + k == 9)x[j] = '9';
-                else x[j] = char('0' +  ((a[i][j]-'0') + k)%9);
-            }
-            a.pb(x);
-        }
-    }
     m = sz(a[0]);
-    n = sz(a);
-    for(int i=0;i<n;i++){
-        for(int k =1;k<=4;k++){
-            for(int j=0;j<m;j++){
-                char x;
-                if((a[i][j]-'0') + k == 9)x = '9';
-                else x = char('0' +  ((a[i][j]-'0') + k)%9);
-                a[i].pb(x);
-            }
-        }
-    }
-    m = sz(a[0]);
-
-    for(auto x : a)cout<<x<<endl;
     vector<vector<int>>best(n,vector<int>(m,1e9));
     best[0][0] = 0;
     priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>q;
