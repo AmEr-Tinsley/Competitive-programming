@@ -25,7 +25,6 @@ int dfs(int u,int c,int p){
     }
     return ret;
 }
-
 void solve(int tc){
     scanf("%d %d",&n,&m);
     for(int i = 1;i<=n;i++)scanf("%d",&a[i]);
